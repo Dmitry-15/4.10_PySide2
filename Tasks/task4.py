@@ -14,7 +14,7 @@ from PySide2.QtWidgets import QApplication, QWidget
 
 class MainWindow(QWidget):
     def __init__(self):
-        super().__init__()
+        super().__init__()  # Вызываем конструктор базового класса QWidget
         self.setWindowTitle("Рисунок")
         self.setGeometry(600, 460, 600, 460)
 
@@ -33,11 +33,7 @@ class MainWindow(QWidget):
         painter.setBrush((QBrush(Qt.white)))
         painter.drawEllipse(436, 364, 20, 20)
         painter.setBrush((QBrush(Qt.blue)))
-        points = QPolygon([
-            QPoint(260, 166),
-            QPoint(433, 36),
-            QPoint(589, 166)
-        ])
+        points = QPolygon([QPoint(260, 166), QPoint(433, 36), QPoint(589, 166)])
         painter.drawPolygon(points)
         painter.begin(self)
         painter.setRenderHint(QPainter.Antialiasing)
@@ -55,56 +51,16 @@ class MainWindow(QWidget):
         self.grass(painter)
         self.dog(painter)
 
-    def grass(self, painter):
-        painter.begin(self)
-        painter.setRenderHint(QPainter.Antialiasing)
-        painter.setPen(QPen(Qt.green, 2, Qt.SolidLine))
-        painter.setBrush(Qt.darkGreen)
-        for i in range(30):
-            painter.drawArc(random.randint(1, 10), 300, i * 40, 400, 0 * 250, random.randint(45, 85) * 8)
-
     def dog(self, painter):
         painter.begin(self)
-        points1 = QPolygon([
-            QPoint(152, 415),
-            QPoint(181, 395),
-            QPoint(181, 416)
-        ])
-        points2 = QPolygon([
-            QPoint(152, 415),
-            QPoint(121, 381),
-            QPoint(87, 415)
-        ])
-        points3 = QPolygon([
-            QPoint(97, 404),
-            QPoint(122, 382),
-            QPoint(97, 355)
-        ])
-        points4 = QPolygon([
-            QPoint(97, 353),
-            QPoint(123, 327),
-            QPoint(97, 300)
-        ])
-        points5 = QPolygon([
-            QPoint(97, 353),
-            QPoint(72, 327),
-            QPoint(97, 300)
-        ])
-        points6 = QPolygon([
-            QPoint(130, 330),
-            QPoint(130, 300),
-            QPoint(106, 305)
-        ])
-        points7 = QPolygon([
-            QPoint(66, 330),
-            QPoint(66, 300),
-            QPoint(88, 305)
-        ])
-        points8 = QPolygon([
-            QPoint(97, 340),
-            QPoint(100, 335),
-            QPoint(94, 335)
-        ])
+        points1 = QPolygon([QPoint(152, 415), QPoint(181, 395), QPoint(181, 416)])
+        points2 = QPolygon([QPoint(152, 415), QPoint(121, 381), QPoint(87, 415)])
+        points3 = QPolygon([QPoint(97, 404), QPoint(122, 382), QPoint(97, 355)])
+        points4 = QPolygon([QPoint(97, 353), QPoint(123, 327), QPoint(97, 300)])
+        points5 = QPolygon([QPoint(97, 353), QPoint(72, 327), QPoint(97, 300)])
+        points6 = QPolygon([QPoint(130, 330), QPoint(130, 300), QPoint(106, 305)])
+        points7 = QPolygon([QPoint(66, 330), QPoint(66, 300), QPoint(88, 305)])
+        points8 = QPolygon([QPoint(97, 340), QPoint(100, 335), QPoint(94, 335)])
         painter.setPen(QPen(Qt.black))
         painter.setBrush(QBrush(Qt.yellow))
         painter.drawPolygon(points1)
@@ -119,6 +75,21 @@ class MainWindow(QWidget):
         painter.setBrush(QBrush(Qt.black))
         painter.drawEllipse(86, 318, 8, 10)
         painter.drawEllipse(100, 318, 8, 10)
+
+    def grass(self, painter):
+        painter.begin(self)
+        painter.setRenderHint(QPainter.Antialiasing)
+        painter.setPen(QPen(Qt.green, 2, Qt.SolidLine))
+        painter.setBrush(Qt.darkGreen)
+        for i in range(30):
+            painter.drawArc(
+                random.randint(1, 10),
+                300,
+                i * 40,
+                400,
+                0 * 250,
+                random.randint(45, 85) * 8,
+            )
 
 
 if __name__ == "__main__":

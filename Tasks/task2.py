@@ -2,18 +2,26 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from PySide2.QtWidgets import QApplication, QWidget, QLineEdit,  QVBoxLayout, QListWidget
+from PySide2.QtWidgets import (
+    QApplication,
+    QWidget,
+    QLineEdit,
+    QVBoxLayout,
+    QListWidget,
+)
 
 """
-Напишите программу по следующему описанию. Нажатие Enter в однострочном текстовом поле 
-приводит к перемещению текста из него в список. При двойном клике по элементу-строке 
-списка, она должна копироваться в текстовое поле.
+Напишите программу по следующему описанию. Нажатие
+Enter в однострочном текстовом поле приводит к
+перемещению текста из него в список. При двойном
+клике по элементу-строке списка, она должна копироваться
+в текстовое поле.
 """
 
 
 class MainWindow(QWidget):
     def __init__(self):
-        super().__init__()
+        super().__init__()  # Вызываем конструктор базового класса QWidget
         self.setWindowTitle("Перемещение текста")
         self.setGeometry(400, 250, 400, 250)
         self.list = QListWidget()

@@ -2,19 +2,29 @@
 # -*- coding: utf-8 -*-
 
 import sys
-from PySide2.QtWidgets import QApplication, QWidget, QLineEdit, QHBoxLayout, QVBoxLayout, QPushButton, QTextEdit
+from PySide2.QtWidgets import (
+    QApplication,
+    QWidget,
+    QLineEdit,
+    QHBoxLayout,
+    QVBoxLayout,
+    QPushButton,
+    QTextEdit,
+)
 
 """
-Напишите программу по описанию. Размеры многострочного текстового поля определяются 
-значениями, введенными в однострочные текстовые поля. Изменение размера происходит 
-при нажатии мышью на кнопку, а также при нажатии клавиши Enter. Цвет фона экземпляра 
-Text светлосерый (lightgrey), когда поле не в фокусе, и белый, когда имеет фокус.
+Напишите программу по описанию. Размеры многострочного
+текстового поля определяются значениями, введенными в
+однострочные текстовые поля. Изменение размера происходит
+при нажатии мышью на кнопку, а также при нажатии клавиши
+Enter. Цвет фона экземпляра Text светлосерый (lightgrey),
+когда поле не в фокусе, и белый, когда имеет фокус.
 """
 
 
 class MainWindow(QWidget):
     def __init__(self):
-        super().__init__()
+        super().__init__()  # Вызываем конструктор базового класса QWidget
         QApplication.instance().focusChanged.connect(self.focus_change)
         self.setWindowTitle("Изменение размера поля")
         self.setGeometry(400, 250, 400, 250)
